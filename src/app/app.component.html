@@ -1,7 +1,13 @@
+<app-global-error></app-global-error>
+
 <div class="max-w-2xl container mx-auto pt-5">
 
 <h1 class="text-3xl font-bold text-center underline">{{title | titlecase }}</h1> 
 
-<app-product [product]="products[0]"></app-product>
-<app-product [product]="products[1]"></app-product>
+<p *ngIf="loading" class="text-center text-lg">Loading...</p>
+
+<app-product 
+    *ngFor="let product of products$ | async" 
+    [product]="product">
+</app-product>
 </div>

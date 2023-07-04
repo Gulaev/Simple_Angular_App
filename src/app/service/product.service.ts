@@ -14,13 +14,13 @@ export class ProductService {
     }
 
     getAll() : Observable<IProduct[]> {
-        return this.http.get<IProduct[]>('https://fakestoreapi.com/products', {
+        return this.http.get<IProduct[]>('https://fakestoreapi.com/products1', {
             params: new HttpParams( {
                 fromObject : {limit : 5}
             })
         }).pipe(
             delay(200),
-            catchError(this.errorHandler))
+            catchError(this.errorHandler.bind(this)))
     }
 
     private errorHandler(error : HttpErrorResponse) {

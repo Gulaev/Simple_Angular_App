@@ -6,13 +6,12 @@ import { Subject } from 'rxjs';
 })
 export class ErrorService {
   error$ = new Subject<string>()
-  constructor() { }
 
   handler(message: string) {
     this.error$.next(message)
   }
 
   clear() {
-    this.error$.next('')
+    this.error$.next(' ')
   }
-}
+} 

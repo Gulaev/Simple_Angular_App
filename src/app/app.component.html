@@ -1,13 +1,26 @@
-<app-global-error></app-global-error>
+<app-global-error> </app-global-error>
 
 <div class="max-w-2xl container mx-auto pt-5">
+
+    <input
+    type="text"
+    class="mb-2 border py-2 px-4 w-full"
+    placeholder="Find product"
+    [(ngModel)]="tern">
 
 <h1 class="text-3xl font-bold text-center underline">{{title | titlecase }}</h1> 
 
 <p *ngIf="loading" class="text-center text-lg">Loading...</p>
 
-<app-product 
-    *ngFor="let product of products$ | async" 
-    [product]="product">
-</app-product>
+<div *ngIf="products$ | async as products">
+    <app-product 
+        *ngFor="let product of products | filterProducts: tern" 
+        [product]="product">
+    </app-product>
+</div>
+<!-- 
+<app-modal>
+    <app-create-product></app-create-product>
+</app-modal> -->
+
 </div>

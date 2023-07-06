@@ -10,7 +10,8 @@ import { Observable, tap } from 'rxjs';
 })
 export class AppComponent implements OnInit {
   title = 'Hello Shop';
-  // products: IProduct[] = [];
+
+  tern = ' '
   loading = false
   products$ : Observable<IProduct[]>
 
@@ -21,10 +22,5 @@ export class AppComponent implements OnInit {
 
     this.products$ = this.productService.getAll().pipe(
     tap(() => this.loading = false))
-    // this.productService.getAll().subscribe(products => {
-    //   this.products = products 
-    //   this.loading = false
-    // });
-
   }
 }

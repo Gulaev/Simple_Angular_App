@@ -16,12 +16,16 @@ export class ProductService {
     getAll() : Observable<IProduct[]> {
         return this.http.get<IProduct[]>('https://fakestoreapi.com/products', {
             params: new HttpParams( {
-                fromObject : {limit : 5}
+                fromObject : {limit : 100}
             })
         }).pipe(
             delay(200),
             retry(2),
             catchError(this.errorHandler.bind(this)))
+    }
+
+    public create(product:IProduct):Observable<IProduct> {
+        return this.http.post<IProduct>('https://fakestoreapi.com/products', product)
     }
 
     private errorHandler(error : HttpErrorResponse) {

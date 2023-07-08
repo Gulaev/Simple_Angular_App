@@ -1,10 +1,16 @@
-<form>
+<form [formGroup]="form" (ngSubmit)="submit()">
     <input type="text"
-    class="border w-full py-2 px-4 mb-2"
-    placeholder="Product Name">
+           class="border w-full py-2 px-4 mb-2"
+           placeholder="Product Name"
+           formControlName="title"
+           appFocus>
+       
 
-    <button
-    class="p-4 px-4 bg-blue-600 text-white">
+
+           <p class="text-red-700 font-medium mb-2"
+           *ngIf="title.errors?.minlength && title.touched" class="error-message">Pleace enter more than 3 symbols, now length title {{title.value?.length}}</p>
+
+    <button class="p-4 px-4 bg-blue-600 text-white" type="submit">
         Create
     </button>
 </form>

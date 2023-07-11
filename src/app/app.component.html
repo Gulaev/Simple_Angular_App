@@ -12,9 +12,9 @@
 
 <p *ngIf="loading" class="text-center text-lg">Loading...</p>
 
-<div *ngIf="products$ | async as products">
+<div *ngIf="productService.products ">
     <app-product 
-        *ngFor="let product of products | filterProducts: tern" 
+        *ngFor="let product of productService.products  | filterProducts: tern" 
         [product]="product">
     </app-product>
 </div>
